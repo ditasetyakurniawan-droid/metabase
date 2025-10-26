@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: ghcr.io/gonjali/metabase
+  REGISTRY: ghcr.io/ditasetyakurniawan-droid/metabase
   GH_REGISTRY: ghcr.io
   IMAGE_NAME: metabase
   DOCKER_BUILDKIT: 1
