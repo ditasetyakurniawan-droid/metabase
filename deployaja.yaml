@@ -1,0 +1,45 @@
+name: metabase
+version: latest
+description: Metabase Analytics Platform
+container:
+  image: ghcr.io/gonjali/metabase:latest
+  port: 3000
+resources:
+  cpu: 1
+  memory: 1Gi
+  replicas: 1
+env:
+  - name: MB_DB_TYPE
+    value: postgres
+  - name: MB_DB_DBNAME
+    value: metabase
+    userManaged: true
+  - name: MB_DB_PORT
+    value: "5432"
+    userManaged: true
+  - name: MB_DB_USER
+    value: postgres
+    userManaged: true
+  - name: MB_DB_PASS
+    value: postgres
+    userManaged: true
+  - name: MB_DB_HOST
+    value: localhost
+    userManaged: true
+  - name: MB_ENCRYPTION_SECRET_KEY
+    value: "randomsecretkey123"
+envMap:
+  domain_env: MB_SITE_URL
+domain: metabase.deployaja.id
+
+# Metadata untuk marketplace
+logo: logo.png
+screenshots:
+  - screenshot1.png
+categories:
+  - Analytics
+  - Dashboard
+tags:
+  - metabase
+  - analytics
+  - business-intelligence
