@@ -31,11 +31,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GIT_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Pull, tag and push Metabase image
         run: |
           docker pull metabase/metabase:v0.48.4
-          docker tag metabase/metabase:v0.48.4 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          docker tag metabase/metabase:v0.48.4 ${{ env.REGISTRY }}:latest
+          docker push ${{ env.REGISTRY }}:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -60,11 +60,10 @@ jobs:
           command: deploy
           api-token: ${{ secrets.DEPLOYAJA_TOKEN }}
           additional-args: |
-            --set container.image=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest            
+            --set container.image=${{ env.REGISTRY }}:latest
           
       - name: DeployAja Status
         uses: deployaja/deployaja-cli@v0.0.17
         with:
           command: status
           api-token: ${{ secrets.DEPLOYAJA_TOKEN }}
-
