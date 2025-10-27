@@ -1,29 +1,32 @@
 name: metabase
 version: latest
 description: Metabase Analytics Dashboard
+
 container:
   image: ghcr.io/ditasetyakurniawan-droid/metabase:latest
   port: 3000
+
 resources:
   cpu: 1000m
   memory: 1024Mi       # cukup untuk booting dan operasi ringan
   replicas: 1
+
 env:
-  # Gunakan database eksternal supaya container tidak menyimpan data di disk
   - name: MB_DB_TYPE
     value: postgres
   - name: MB_DB_DBNAME
     value: metabase
   - name: MB_DB_PORT
-    value: 5432
+    value: "5432"
   - name: MB_DB_USER
     value: postgres
   - name: MB_DB_PASS
     value: supersecretpassword
   - name: MB_DB_HOST
-    value: <POSTGRES_HOST>
+    value: postgres.apps.svc.cluster.local   # ✅ host PostgreSQL di namespace apps
   - name: MB_SITE_URL
     value: https://metabase.deployaja.id
+
 envMap:
   domain_env: MB_SITE_URL
 
