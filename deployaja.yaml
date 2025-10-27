@@ -11,6 +11,12 @@ resources:
   memory: 2Gi       # cukup untuk booting dan operasi ringan
   replicas: 1
 
+dependencies:
+  - name: postgresql
+    type: POSTGRESQL
+    version: '15'
+    storage_size: 1Gi
+
 env:
   - name: MB_DB_TYPE
     value: postgres
