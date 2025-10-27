@@ -29,5 +29,11 @@ env:
 
 envMap:
   domain_env: MB_SITE_URL
+  db_host_env: MB_DB_HOST
+  db_port_env: MB_DB_PORT
+  db_name_env: MB_DB_DBNAME
+  db_user_env: MB_DB_USER
+  db_pass_env: MB_DB_PASS
+  db_type_env: MB_DB_TYPE
 
 domain: metabase.deployaja.id
