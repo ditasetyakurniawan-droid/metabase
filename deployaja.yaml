@@ -5,8 +5,8 @@ container:
   image: ghcr.io/ditasetyakurniawan-droid/metabase:latest
   port: 3000
 resources:
-  cpu: 2
-  memory: 2Gi       # cukup untuk booting dan operasi ringan
+  cpu: 3500m
+  memory: 3500mi       # cukup untuk booting dan operasi ringan
   replicas: 1
 env:
   # Gunakan database eksternal supaya container tidak menyimpan data di disk
