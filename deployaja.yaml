@@ -23,7 +23,7 @@ env:
   - name: MB_DB_PASS
     value: supersecretpassword
   - name: MB_DB_HOST
-    value: postgres.apps.svc.cluster.local   # ✅ host PostgreSQL di namespace apps
+    value: chartdb-soto56.apps.svc.cluster.local   # ✅ host PostgreSQL di namespace apps
   - name: MB_SITE_URL
     value: https://metabase.deployaja.id
 
