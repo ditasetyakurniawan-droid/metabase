@@ -11,23 +11,27 @@ resources:
   memory: 2Gi
   replicas: 1
 
+# ✅ Gunakan database otomatis dari DeployAja
 dependencies:
   - name: postgresql
     type: POSTGRESQL
     version: '15'
     storage_size: 1Gi
 
+# ✅ Environment hanya untuk konfigurasi dasar Metabase
 env:
+  - name: MB_DB_TYPE
+    value: postgres
   - name: MB_SITE_URL
     value: https://metabase.deployaja.id
 
+# ✅ Mapping otomatis dari dependency PostgreSQL DeployAja → variabel Metabase
 envMap:
   domain_env: MB_SITE_URL
-  db_host_env: MB_DB_HOST
-  db_port_env: MB_DB_PORT
-  db_name_env: MB_DB_DBNAME
-  db_user_env: MB_DB_USER
-  db_pass_env: MB_DB_PASS
-  db_type_env: MB_DB_TYPE
+  db_host: MB_DB_HOST
+  db_port: MB_DB_PORT
+  db_name: MB_DB_DBNAME
+  db_user: MB_DB_USER
+  db_pass: MB_DB_PASS
 
 domain: metabase.deployaja.id
